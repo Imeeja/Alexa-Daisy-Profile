@@ -1,0 +1,231 @@
+<svg
+  width="100%"
+  height="100%"
+  viewBox="0 0 1200 700"
+  xmlns="http://www.w3.org/2000/svg"
+  preserveAspectRatio="xMidYMid slice"
+>
+  <defs>
+
+    <!-- Glow -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+
+    <!-- Gradient for the main lines -->
+    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1764d8" stop-opacity="0"/>
+      <stop offset="35%" stop-color="#1764d8"/>
+      <stop offset="65%" stop-color="#e34b07"/>
+      <stop offset="100%" stop-color="#e34b07" stop-opacity="0"/>
+    </linearGradient>
+
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="700" fill="#F3F2EC"/>
+
+
+  <!-- =========================
+       LARGE ORBITING LINE
+  ========================== -->
+
+  <path
+    d="M -150 500
+       C 150 180, 350 650, 620 350
+       S 1000 100, 1350 300"
+    fill="none"
+    stroke="url(#lineGradient)"
+    stroke-width="2"
+    opacity="0.7"
+  >
+    <animate
+      attributeName="stroke-dasharray"
+      values="0 2000; 500 1500; 0 2000"
+      dur="12s"
+      repeatCount="indefinite"
+    />
+  </path>
+
+
+  <!-- Second orbit -->
+  <path
+    d="M -100 180
+       C 200 500, 420 50, 700 300
+       S 1050 550, 1300 150"
+    fill="none"
+    stroke="#1764d8"
+    stroke-width="1.5"
+    opacity="0.35"
+    stroke-dasharray="8 14"
+  >
+    <animateTransform
+      attributeName="transform"
+      type="translate"
+      values="0 0; 20 -10; 0 0"
+      dur="10s"
+      repeatCount="indefinite"
+    />
+  </path>
+
+
+  <!-- =========================
+       GLOWING ORBS
+  ========================== -->
+
+  <circle cx="180" cy="160" r="18"
+          fill="#1764d8"
+          opacity="0.12"
+          filter="url(#softGlow)"/>
+
+  <circle cx="180" cy="160" r="4"
+          fill="#4d8dff"
+          filter="url(#glow)">
+    <animate
+      attributeName="r"
+      values="3;6;3"
+      dur="4s"
+      repeatCount="indefinite"
+    />
+    <animate
+      attributeName="opacity"
+      values="0.5;1;0.5"
+      dur="4s"
+      repeatCount="indefinite"
+    />
+  </circle>
+
+
+  <circle cx="940" cy="190" r="20"
+          fill="#e34b07"
+          opacity="0.12"
+          filter="url(#softGlow)"/>
+
+  <circle cx="940" cy="190" r="4"
+          fill="#ff7138"
+          filter="url(#glow)">
+    <animate
+      attributeName="r"
+      values="3;7;3"
+      dur="5s"
+      repeatCount="indefinite"
+    />
+  </circle>
+
+
+  <circle cx="1020" cy="560" r="4" fill="#1764d8">
+    <animate
+      attributeName="cy"
+      values="560;530;560"
+      dur="6s"
+      repeatCount="indefinite"
+    />
+  </circle>
+
+
+  <circle cx="300" cy="560" r="3" fill="#e34b07">
+    <animate
+      attributeName="cy"
+      values="560;525;560"
+      dur="7s"
+      repeatCount="indefinite"
+    />
+  </circle>
+
+
+  <!-- =========================
+       SMALL FLOATING PARTICLES
+  ========================== -->
+
+  <g fill="#ffffff">
+
+    <circle cx="90" cy="330" r="2">
+      <animate
+        attributeName="cy"
+        values="330;300;330"
+        dur="5s"
+        repeatCount="indefinite"
+      />
+    </circle>
+
+    <circle cx="450" cy="120" r="2">
+      <animate
+        attributeName="cy"
+        values="120;90;120"
+        dur="6s"
+        repeatCount="indefinite"
+      />
+    </circle>
+
+    <circle cx="730" cy="520" r="2">
+      <animate
+        attributeName="cy"
+        values="520;490;520"
+        dur="5s"
+        repeatCount="indefinite"
+      />
+    </circle>
+
+    <circle cx="1100" cy="350" r="2">
+      <animate
+        attributeName="cy"
+        values="350;315;350"
+        dur="7s"
+        repeatCount="indefinite"
+      />
+    </circle>
+
+  </g>
+
+
+  <!-- =========================
+       SMALL ROTATING RING
+  ========================== -->
+
+  <g transform="translate(1080 100)">
+    <circle
+      cx="0"
+      cy="0"
+      r="28"
+      fill="none"
+      stroke="#e34b07"
+      stroke-width="1"
+      opacity="0.5"
+      stroke-dasharray="5 8"
+    >
+      <animateTransform
+        attributeName="transform"
+        type="rotate"
+        from="0"
+        to="360"
+        dur="18s"
+        repeatCount="indefinite"
+      />
+    </circle>
+  </g>
+
+
+  <!-- =========================
+       STAR / SPARK
+  ========================== -->
+
+  <g fill="#e34b07" filter="url(#glow)">
+    <path d="M850 430 L854 440 L864 444 L854 448 L850 458 L846 448 L836 444 L846 440 Z">
+      <animate
+        attributeName="opacity"
+        values="0.3;1;0.3"
+        dur="3s"
+        repeatCount="indefinite"
+      />
+    </path>
+  </g>
+
+</svg>
